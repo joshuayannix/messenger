@@ -15,7 +15,7 @@ function App() {
   //useEffect = code that runs based on a condition. Runs when the component loads
 
   useEffect(() => {
-    //setUsername(prompt('Please enter your name'));
+    setUsername(prompt('Please enter your name'));
   }, [] )
   const sendMessage = event => {
     // all logic to send a message
@@ -44,8 +44,8 @@ function App() {
       {
         messages.map(message => (
           <Message 
-            username={message.username} 
-            text={message.text}
+            username={username} 
+            message={message}
           />          
         ))
       }
