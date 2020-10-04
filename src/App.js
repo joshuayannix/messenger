@@ -1,32 +1,54 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './App.css';
+import { Button, FormControl, InputLabel, Input } from '@material-ui/core';
+import Message from './Message';
 
 function App() {
   const [input, setInput] = useState('');
-  const [messages, setMessages] = useState([ 'hey is this available', 'no it is not', 'positive messages only']);
+  const [messages, setMessages] = useState([
+    {username: 'Josh', text: 'hey whats up'},
+    {username: 'George', text: 'nothing much, you?'}
+   ]);
+  const [username, setUsername] = useState('');
 
-  console.log(input);
-  console.log(messages);
+  //useState = just a way to set a variable in react
+  //useEffect = code that runs based on a condition. Runs when the component loads
 
+  useEffect(() => {
+    //setUsername(prompt('Please enter your name'));
+  }, [] )
   const sendMessage = event => {
     // all logic to send a message
-    setMessages([...messages, input]);
+    event.preventDefault();
+    setMessages([...messages, {username: username, text: input}]);
     setInput('');
   };
 
   return (
     <div className="App">
       <h1>hello josh</h1>
-
-      <input value={input} onChange={event => setInput(event.target.value)}/>
-      <button onClick={sendMessage}>Send message</button>
-      
+      <h2>Welcome {username}! You look great today!</h2>
+      <form>
+        <FormControl>
+          <InputLabel>Enter a message...</InputLabel>
+          <Input value={input} onChange={event => setInput(event.target.value)}/>
+          <Button 
+            disabled={!input} 
+            variant='contained' 
+            color='primary' 
+            type='submit' 
+            onClick={sendMessage}>Send message
+          </Button>
+        </FormControl>   
+      </form>
       {
         messages.map(message => (
-          <p>{message}</p>
+          <Message 
+            username={message.username} 
+            text={message.text}
+          />          
         ))
       }
-      
     </div>
   );
 }
