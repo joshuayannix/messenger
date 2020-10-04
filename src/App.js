@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import './App.css';
-import { Button, FormControl, InputLabel, Input } from '@material-ui/core';
+import { FormControl, Input } from '@material-ui/core';
 import Message from './Message';
 import db from './firebase';
 import firebase from 'firebase';
@@ -15,6 +15,11 @@ function App() {
 
    ]);
   const [username, setUsername] = useState('');
+
+  const dummy = useRef();
+  console.log(dummy)
+  console.log(dummy.current)
+
 
   useEffect(() => {
     db.collection('messages')
@@ -39,12 +44,18 @@ function App() {
     });
 
     setInput('');
+
+    dummy.current.scrollIntoView({ behavior: 'smooth' });
   };
 
   return (
     <div className="App">
-      <img src='https://facebookbrand.com/wp-content/uploads/2018/09/Header-e1538151782912.png?w=100&h=100' alt='messeenger logo'/>
-      <h2>Welcome {username}! You look great today</h2>
+      
+      <div className="app__header">
+        <img src='https://facebookbrand.com/wp-content/uploads/2018/09/Header-e1538151782912.png?w=100&h=100' alt='messeenger logo'/>
+        <h2>Welcome {username}! You look great today</h2>
+      </div>
+      
       
       <form className='app__form'>
         <FormControl className='app__formControl'>
@@ -78,7 +89,10 @@ function App() {
             />          
           ))
         }
+        
       </FlipMove>
+      <div ref={dummy}></div>
+      
       
       
     </div>

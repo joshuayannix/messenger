@@ -2,6 +2,16 @@
   text-align: center;
 }
 
+.app__header {
+  top: 0;
+  position: fixed;
+  padding-top: 10px;
+  z-index: 1;
+  width: 100%;
+  background-color: #ffffff;
+  border: 2px solid #e9e9eb
+}
+
 .app__form {
   padding: 20px;
   position: fixed;
@@ -26,7 +36,9 @@
 }
 
 .app__messages {
-  height: 70vh;
+  /* height: 70vh;
   overflow: scroll;
-  overflow-x: hidden;
+  overflow-x: hidden; */
+  margin-bottom: 250px;
+  margin-top: 200px;
 }
