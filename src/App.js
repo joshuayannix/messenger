@@ -68,7 +68,7 @@ function App() {
         </FormControl>   
       </form>
 
-      <FlipMove>
+      <FlipMove className='app__messages'>
         {
           messages.map(({ id, message }) => (
             <Message 
