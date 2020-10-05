@@ -17,10 +17,7 @@ function App() {
   const [username, setUsername] = useState('');
 
   const dummy = useRef();
-  console.log(dummy)
-  console.log(dummy.current)
-
-
+ 
   useEffect(() => {
     db.collection('messages')
     .orderBy('timestamp', 'asc')
@@ -48,20 +45,34 @@ function App() {
     dummy.current.scrollIntoView({ behavior: 'smooth' });
   };
 
+
+
   return (
     <div className="App">
-      
+
       <div className="app__header">
         <img src='https://facebookbrand.com/wp-content/uploads/2018/09/Header-e1538151782912.png?w=100&h=100' alt='messeenger logo'/>
         <h2>Welcome {username}! You look great today</h2>
       </div>
       
-      
+      <FlipMove className='app__messages'>
+        {
+          messages.map(({ id, message }) => (
+            <Message 
+              key={id}
+              messageID={id}
+              username={username} 
+              message={message}
+            />          
+          ))
+        }
+        
+      </FlipMove>
       <form className='app__form'>
         <FormControl className='app__formControl'>
           <Input 
             className='app__input'
-            placeholder='Enter a message...' 
+            placeholder='Type a message...' 
             value={input} 
             onChange={event => setInput(event.target.value)}
           />
@@ -79,18 +90,7 @@ function App() {
         </FormControl>   
       </form>
 
-      <FlipMove className='app__messages'>
-        {
-          messages.map(({ id, message }) => (
-            <Message 
-              key={id}
-              username={username} 
-              message={message}
-            />          
-          ))
-        }
-        
-      </FlipMove>
+      
       <div ref={dummy}></div>
       
       
