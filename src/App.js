@@ -1,5 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 import './App.css';
+import Navbar from "./Navbar";
+
 import { FormControl, Input } from '@material-ui/core';
 import Message from './Message';
 import db from './firebase';
@@ -7,13 +9,12 @@ import firebase from 'firebase';
 import FlipMove from 'react-flip-move';
 import SendIcon from '@material-ui/icons/Send';
 import { IconButton } from '@material-ui/core';
-
+import { ThemeProvider } from './ThemeContext';
+import PageContent from './PageContent';
 
 function App() {
   const [input, setInput] = useState('');
-  const [messages, setMessages] = useState([
-
-   ]);
+  const [messages, setMessages] = useState([]);
   const [username, setUsername] = useState('');
 
   const dummy = useRef();
@@ -28,9 +29,9 @@ function App() {
     })
   }, []);
 
-  useEffect(() => {
-    setUsername(prompt('Please enter your name'));
-  }, [] );
+  // useEffect(() => {
+  //   setUsername(prompt('Please enter your name'));
+  // }, [] );
 
   const sendMessage = event => {
     event.preventDefault();
@@ -45,15 +46,11 @@ function App() {
     dummy.current.scrollIntoView({ behavior: 'smooth' });
   };
 
-
-
   return (
+    <ThemeProvider>
+    <PageContent>
     <div className="App">
-
-      <div className="app__header">
-        <img src='https://facebookbrand.com/wp-content/uploads/2018/09/Header-e1538151782912.png?w=100&h=100' alt='messeenger logo'/>
-        <h2>Welcome {username}! You look great today</h2>
-      </div>
+      <Navbar username={username}/>
       
       <FlipMove className='app__messages'>
         {
@@ -66,8 +63,8 @@ function App() {
             />          
           ))
         }
-        
       </FlipMove>
+
       <form className='app__form'>
         <FormControl className='app__formControl'>
           <Input 
@@ -89,13 +86,12 @@ function App() {
 
         </FormControl>   
       </form>
-
-      
+     
       <div ref={dummy}></div>
       
-      
-      
     </div>
+    </PageContent>
+    </ThemeProvider>
   );
 }
 
