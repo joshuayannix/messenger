@@ -48,49 +48,49 @@ function App() {
 
   return (
     <ThemeProvider>
-    <PageContent>
-    <div className="App">
-      <Navbar username={username}/>
-      
-      <FlipMove className='app__messages'>
-        {
-          messages.map(({ id, message }) => (
-            <Message 
-              key={id}
-              messageID={id}
-              username={username} 
-              message={message}
-            />          
-          ))
-        }
-      </FlipMove>
+      <PageContent>
+        <div className="App">
+          <Navbar username={username}/>
+          
+          <FlipMove className='app__messages'>
+            {
+              messages.map(({ id, message }) => (
+                <Message 
+                  key={id}
+                  messageID={id}
+                  username={username} 
+                  message={message}
+                />          
+              ))
+            }
+          </FlipMove>
 
-      <form className='app__form'>
-        <FormControl className='app__formControl'>
-          <Input 
-            className='app__input'
-            placeholder='Type a message...' 
-            value={input} 
-            onChange={event => setInput(event.target.value)}
-          />
-          <IconButton 
-            className='app__iconButton'
-            disabled={!input} 
-            variant='contained' 
-            color='primary' 
-            type='submit' 
-            onClick={sendMessage}
-          >
-            <SendIcon />
-          </IconButton>
+          <form className='app__form'>
+            <FormControl className='app__formControl'>
+              <Input 
+                className='app__input'
+                placeholder='Type a message...' 
+                value={input} 
+                onChange={event => setInput(event.target.value)}
+              />
+              <IconButton 
+                className='app__iconButton'
+                disabled={!input} 
+                variant='contained' 
+                color='primary' 
+                type='submit' 
+                onClick={sendMessage}
+              >
+                <SendIcon />
+              </IconButton>
 
-        </FormControl>   
-      </form>
-     
-      <div ref={dummy}></div>
-      
-    </div>
-    </PageContent>
+            </FormControl>   
+          </form>
+        
+          <div ref={dummy}></div>
+          
+        </div>
+      </PageContent>
     </ThemeProvider>
   );
 }

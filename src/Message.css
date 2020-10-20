@@ -3,6 +3,7 @@
   margin: 10px;
   width: fit-content;
   transition: transform 450ms;
+  border: 2px solid red;
 }
 
 .message:hover {
@@ -16,11 +17,15 @@
 }
 
 .message__userCard {
-  background-color: #0b81ff !important;
-  color: white !important
+  background-color: #0099ff!important;
+  color: white !important;
+  border-bottom-left-radius: 1.3em !important;
+  border-top-left-radius: 1.3em !important;
 
 }
 
 .message__guestCard {
   background-color: #e9e9eb !important;
+  border-bottom-right-radius: 1.3em !important;
+  border-top-right-radius: 1.3em !important;
 }

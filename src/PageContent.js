@@ -5,9 +5,8 @@ export function PageContent(props) {
   const { isDarkMode } = useContext(ThemeContext);
   
   const styles ={
-    backgroundColor: isDarkMode ? 'yellow' : 'grey',
-    height: '100vh',
-    width: '100vw'
+    backgroundColor: isDarkMode ? '#fff' : '#1c1e21',
+
   }
   
   return (

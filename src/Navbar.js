@@ -5,14 +5,16 @@ import { ThemeContext } from './ThemeContext';
 function Navbar({username}) {
   const { isDarkMode, setDarkMode } = useContext(ThemeContext);
 
-  const styles = {
-    backgroundColor: isDarkMode ? 'white': 'grey',
+  const headerStyles = {
+    backgroundColor: isDarkMode ? '#fff': '#242526',
   };
-  
+
+  const titleStyles = {
+    color: isDarkMode? 'black' : 'white'
+  }
   return (    
-    <div className="app__header" style={styles}>
-      <img src='https://facebookbrand.com/wp-content/uploads/2018/09/Header-e1538151782912.png?w=100&h=100' alt='messeenger logo'/>
-      <h2>Welcome {username}! You look great today</h2>
+    <div className="app__header" style={headerStyles}>
+      <h2 style={titleStyles}>Welcome {username}! </h2>
       <Switch onChange={setDarkMode}/>
     </div>    
   )
