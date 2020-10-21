@@ -1,6 +1,4 @@
 import React, { forwardRef } from 'react';
-import './Message.css';
-import { Card, CardContent, Typography } from '@material-ui/core';
 import HighlightOffIcon from '@material-ui/icons/HighlightOff';
 import { IconButton } from '@material-ui/core';
 import db from './firebase';
@@ -10,24 +8,15 @@ const Message = forwardRef(({ message, username, messageID }, ref) => {
 
   return (
     <div ref={ref} className={`message ${isUser && 'message__user'}`}>
-      <Card className={isUser ? 'message__userCard' : 'message__guestCard'}>
-        <CardContent>
-          <Typography           
-            variant='body1'
-          >
-            {!isUser && `${message.username || 'Unkown User'}:`} {message.message}
-            
-          </Typography>
+      <div className={isUser ? 'message__userCard' : 'message__guestCard'}>
 
-          <IconButton         
-            color='secondary' 
-            onClick={event => db.collection('messages').doc(messageID).delete()} 
-          >            
-            <HighlightOffIcon />            
-          </IconButton>
+        <p>{!isUser && `${message.username || 'Unkown User'}:`} {message.message}</p>
+        
+        {isUser && <IconButton className='message__delete' color='secondary'onClick={() => db.collection('messages').doc(messageID).delete()} >            
+          <HighlightOffIcon />            
+        </IconButton>}
 
-        </CardContent>
-      </Card>
+      </div>
     </div>
   )
 });

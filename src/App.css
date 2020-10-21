@@ -1,44 +1,128 @@
 .App {
   text-align: center;
-
+  max-width: 728px;
+  margin: 0 auto;
 }
 
 .app__header {
-  top: 0;
+  height: 10vh;
+  min-height: 50px;
   position: fixed;
+  width: 100%;
+  max-width: 728px;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   padding-top: 10px;
   z-index: 1;
-  width: 100%;
-  border: 2px solid #e9e9eb;
+  padding: 10px;
+  box-sizing: border-box;
+  border: 2px solid #e9e9eb
 }
 
-.app__form {
-  padding: 20px;
+.App section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 100vh;
+  border: 2px solid #e9e9eb
+}
+
+
+main {
+  padding: 10px;
+  height: 80vh;
+  margin: 10vh 0 10vh;
+  overflow-y: scroll;
+  display: flex;
+  flex-direction: column;
+}
+
+/* main::-webkit-scrollbar {
+  width: 0.5rem;
+}
+
+main::-webkit-scrollbar-track {
+  background: #1e1e24;
+}
+
+main::-webkit-scrollbar-thumb {
+  background: #6649b8;
+} */
+
+/********* Form *********/
+
+form {
+  height: 10vh;
   position: fixed;
   bottom: 0;
-  z-index: 1;  
-  background-color: #e9e9eb;
-  width: 90%;
-  margin: 20px;
+  width: 100%;
+  max-width: 728px;
+  display: flex;
+  font-size: 1.5rem;  
 }
 
-.app__formControl {
-  display: flex !important;
-  flex-direction: row !important;
+form button {
+  width: 20%;
+  background-color: red;
+  color: white;
 }
 
-.app__input {
-  flex: 1;
+
+input {
+  line-height: 1.5;
+  width: 100%;
+  font-size: 1.5rem;
+  background-color:#e9e9eb;  
+  outline: none;
+  border: none;
+  padding: 0 10px;
 }
 
-.app__iconButton {
-  flex: 0;
+
+
+
+
+
+/****************************/
+
+/** Messages **/
+
+p {
+  max-width: 500px;
+  margin-bottom: 12px;
+  line-height: 24px;
+  padding: 5px 20px;
+  position: relative;
 }
 
-.app__messages {
-  /* height: 70vh;
-  overflow: scroll;
-  overflow-x: hidden; */
-  margin-bottom: 200px;
-  margin-top: 200px;
+.message {
+  margin: 10px;
+  width: fit-content;
+  transition: transform 350ms;
+  
 }
+
+.message__user {
+  margin-left: auto;
+  color: white;
+  text-align: left !important;
+}
+
+.message__userCard {
+  background-color: #0099ff!important;
+  color: white !important;
+  border-bottom-left-radius: 1.3em !important;
+  border-top-left-radius: 1.3em !important;
+  display: flex;
+}
+
+.message__guestCard {
+  background-color: #e9e9eb !important;
+  border-bottom-right-radius: 1.3em !important;
+  border-top-right-radius: 1.3em !important;
+  display: flex;
+}
+
+
