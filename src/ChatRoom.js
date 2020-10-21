@@ -1,14 +1,21 @@
-import React, { useEffect, useState, useRef } from 'react'
+import React, { useEffect, useState, useRef, useContext } from 'react'
 import FlipMove from 'react-flip-move';
 import Message from './Message';
 import db from './firebase';
 import firebase from 'firebase';
+import { ThemeContext } from './ThemeContext';
 
 function ChatRoom() {
+  const { isDarkMode, setDarkMode } = useContext(ThemeContext);
+
+  const chatStyles = {
+    background: isDarkMode? 'white' : 'black'
+  }
+
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState('');
   const [username, setUsername] = useState('');
-
+  
   const dummy = useRef();
 
   useEffect(() => {
@@ -21,9 +28,9 @@ function ChatRoom() {
     })
   }, []);
 
-  useEffect(() => {
-    setUsername(prompt('Please enter your name'));
-  }, [] );
+  // useEffect(() => {
+  //   setUsername(prompt('Please enter your name'));
+  // }, [] );
 
   const sendMessage = event => {
     event.preventDefault();
@@ -38,7 +45,8 @@ function ChatRoom() {
     dummy.current.scrollIntoView({ behavior: 'smooth' });
   };
 
-  return (<>
+  return (
+  <div style={chatStyles}>
     <main>
       <FlipMove className='app__messages'>
         {messages.map(({ id, message }) => (<Message key={id} messageID={id} username={username} message={message}/>))}
@@ -53,7 +61,7 @@ function ChatRoom() {
       <button className='app__iconButton' disabled={!input} type='submit' onClick={sendMessage}>Send Message</button>
       
     </form>    
-  </>)
+  </div>)
 }
 
 export default ChatRoom

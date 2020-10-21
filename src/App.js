@@ -1,11 +1,11 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import './App.css';
 import Navbar from "./Navbar";
 import { ThemeProvider } from './ThemeContext';
 import ChatRoom from './ChatRoom';
 
 function App() {
-  
+
   return (
     <ThemeProvider>
       <div className="App">
