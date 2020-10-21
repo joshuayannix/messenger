@@ -111,18 +111,26 @@ p {
 }
 
 .message__userCard {
-  background-color: #0099ff!important;
-  color: white !important;
+  background-color: #0084ff;
+  color: #FFFFFF !important;
   border-bottom-left-radius: 1.3em !important;
   border-top-left-radius: 1.3em !important;
   display: flex;
 }
 
 .message__guestCard {
-  background-color: #e9e9eb !important;
+  background-color: #E4E6EB;
+  color: #050505;
   border-bottom-right-radius: 1.3em !important;
   border-top-right-radius: 1.3em !important;
   display: flex;
 }
 
+.message__guestCard__darkMode {
+  background-color: #3E4042;
+  color: #E4E6EB;
+  border-bottom-right-radius: 1.3em !important;
+  border-top-right-radius: 1.3em !important;
+  display: flex;
+}
 

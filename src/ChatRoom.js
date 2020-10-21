@@ -6,10 +6,10 @@ import firebase from 'firebase';
 import { ThemeContext } from './ThemeContext';
 
 function ChatRoom() {
-  const { isDarkMode, setDarkMode } = useContext(ThemeContext);
+  const { isDarkMode } = useContext(ThemeContext);
 
   const chatStyles = {
-    background: isDarkMode? 'white' : 'black'
+    background: isDarkMode? 'white' : '#1c1e21'
   }
 
   const [messages, setMessages] = useState([]);
