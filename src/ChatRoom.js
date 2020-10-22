@@ -3,13 +3,17 @@ import Message from './Message';
 import db from './firebase';
 import firebase from 'firebase';
 import { ThemeContext } from './ThemeContext';
+import SendIcon from '@material-ui/icons/Send';
+import { IconButton } from '@material-ui/core';
 
 function ChatRoom() {
   const dummy = useRef();
   const { isDarkMode } = useContext(ThemeContext);
 
   const chatStyles = {
-    background: isDarkMode? 'white' : '#1c1e21'
+    background: isDarkMode? 'white' : '#1c1e21',
+    border: isDarkMode ? '2px solid #e9e9eb' : '2px solid #3E4042' 
+
   }
 
   const formInputStyles = {
@@ -61,8 +65,7 @@ function ChatRoom() {
       
       <input style={formInputStyles} placeholder='Type a message...' value={input} onChange={event => setInput(event.target.value)}/>
       
-      <button className='app__iconButton' disabled={!input} type='submit' onClick={sendMessage}>Send Message</button>
-      
+      <IconButton color='primary' disabled={!input} type='submit' onClick={sendMessage}><SendIcon/></IconButton>
     </form>    
     
   </div>)
