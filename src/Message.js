@@ -14,9 +14,14 @@ const Message = forwardRef(({ message, username, messageID }, ref) => {
 
         <p>{!isUser && `${message.username || 'Unkown User'}:`} {message.message}</p>
         
-        {isUser && <IconButton className='message__delete' color='secondary'onClick={() => db.collection('messages').doc(messageID).delete()} >            
-          <HighlightOffIcon />            
-        </IconButton>}
+        {isUser && 
+          <IconButton 
+            className='message__delete' 
+            color='secondary'
+            onClick={() => db.collection('messages').doc(messageID).delete()}
+          ><HighlightOffIcon />            
+          </IconButton>
+        }
 
       </div>
     </div>

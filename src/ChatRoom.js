@@ -5,6 +5,7 @@ import firebase from 'firebase';
 import { ThemeContext } from './ThemeContext';
 import SendIcon from '@material-ui/icons/Send';
 import { IconButton } from '@material-ui/core';
+import ClearAllIcon from '@material-ui/icons/ClearAll';
 
 function ChatRoom({username}) {
   const dummy = useRef();
@@ -47,6 +48,21 @@ function ChatRoom({username}) {
     dummy.current.scrollIntoView({ behavior: 'smooth' });
   };
 
+  const deleteAll = (e) => {
+    e.preventDefault()
+    // extract all the ids out of the messages
+    let messageIds = []
+    messages.forEach(message => {
+      messageIds.push(message.id)
+    }) 
+    // loop over the ids and delete from firestore
+    if(messageIds.length > 0) {
+      messageIds.forEach(id => {
+        db.collection('messages').doc(id).delete()
+      })
+    }
+  };
+
   return (
   <div style={chatStyles}>
     <main>
@@ -61,7 +77,20 @@ function ChatRoom({username}) {
       
       <input style={formInputStyles} placeholder='Type a message...' value={input} onChange={event => setInput(event.target.value)}/>
       
-      <IconButton color='primary' disabled={!input} type='submit' onClick={sendMessage}><SendIcon/></IconButton>
+      <IconButton 
+        variant='contained' 
+        color='primary' 
+        disabled={!input} 
+        type='submit' 
+        onClick={sendMessage}
+      ><SendIcon/>
+      </IconButton>
+
+      <IconButton
+        color='secondary'
+        onClick={deleteAll}
+      ><ClearAllIcon />
+      </IconButton>
     </form>    
     
   </div>)

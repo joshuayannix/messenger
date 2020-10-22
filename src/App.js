@@ -6,9 +6,9 @@ import ChatRoom from './ChatRoom';
 
 function App() {
   const [username, setUsername] = useState('');
-  useEffect(() => {
-    setUsername(prompt('Please enter your name'));
-  }, [] );
+  // useEffect(() => {
+  //   setUsername(prompt('Please enter your name'));
+  // }, [] );
 
   return (
     <ThemeProvider>
