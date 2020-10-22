@@ -50,6 +50,7 @@ form {
   max-width: 728px;
   display: flex;
   font-size: 1.5rem;  
+  
 }
 
 form button {
@@ -68,9 +69,6 @@ input {
   border: none;
   padding: 0 10px;
 }
-
-
-
 
 
 

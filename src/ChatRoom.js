@@ -1,11 +1,11 @@
 import React, { useEffect, useState, useRef, useContext } from 'react'
-import FlipMove from 'react-flip-move';
 import Message from './Message';
 import db from './firebase';
 import firebase from 'firebase';
 import { ThemeContext } from './ThemeContext';
 
 function ChatRoom() {
+  const dummy = useRef();
   const { isDarkMode } = useContext(ThemeContext);
 
   const chatStyles = {
@@ -21,8 +21,6 @@ function ChatRoom() {
   const [input, setInput] = useState('');
   const [username, setUsername] = useState('');
   
-  const dummy = useRef();
-
   useEffect(() => {
     db.collection('messages')
     .orderBy('timestamp', 'asc')
@@ -37,26 +35,26 @@ function ChatRoom() {
   //   setUsername(prompt('Please enter your name'));
   // }, [] );
 
-  const sendMessage = event => {
+  const sendMessage = async event => {
     event.preventDefault();
-    db.collection('messages').add({
+    await db.collection('messages').add({
       message: input,
       username: username,
       timestamp: firebase.firestore.FieldValue.serverTimestamp()
     });
 
     setInput('');
-
     dummy.current.scrollIntoView({ behavior: 'smooth' });
   };
 
   return (
   <div style={chatStyles}>
     <main>
-      <FlipMove className='app__messages'>
-        {messages.map(({ id, message }) => (<Message key={id} messageID={id} username={username} message={message}/>))}
-      </FlipMove>
+      
+      {messages.map(({ id, message }) => (<Message key={id} messageID={id} username={username} message={message}/>))}
+      
       <span ref={dummy}></span>
+
     </main>
 
     <form >
@@ -66,6 +64,7 @@ function ChatRoom() {
       <button className='app__iconButton' disabled={!input} type='submit' onClick={sendMessage}>Send Message</button>
       
     </form>    
+    
   </div>)
 }
 
