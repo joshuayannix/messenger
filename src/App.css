@@ -43,7 +43,7 @@ main {
 /********* Form *********/
 
 form {
-  height: 10vh;
+  height: 7vh;
   position: fixed;
   bottom: 0;
   width: 100%;
@@ -63,11 +63,13 @@ form button {
 input {
   line-height: 1.5;
   width: 100%;
-  font-size: 1.5rem;
+  font-size: 1.1rem;
   background-color:#e9e9eb;  
   outline: none;
   border: none;
   padding: 0 10px;
+  border-radius: 18px;
+  margin: 10px
 }
 
 
@@ -78,46 +80,53 @@ input {
 
 p {
   max-width: 500px;
-  margin-bottom: 12px;
-  line-height: 24px;
-  padding: 5px 20px;
+  margin: 6px 0px;
+  line-height: 18px;
+  padding: 3px 20px;
   position: relative;
 }
 
 .message {
-  margin: 10px;
+  margin: 1px 0px;
+  padding: 1px 6px;
   width: fit-content;
   transition: transform 350ms;
-  
 }
 
 .message__user {
   margin-left: auto;
   color: white;
-  text-align: left !important;
+  text-align: left;
 }
 
 .message__userCard {
-  background-color: #0084ff;
-  color: #FFFFFF !important;
-  border-bottom-left-radius: 1.3em !important;
-  border-top-left-radius: 1.3em !important;
+  background-color: #0099ff;
+  color: #FFFFFF;
+  border-bottom-right-radius: 1.3em;
+  border-bottom-left-radius: 1.3em;
+  border-top-right-radius: 1.3em;
+  border-top-left-radius: 1.3em;
   display: flex;
+  align-items: center;
 }
 
 .message__guestCard {
   background-color: #E4E6EB;
   color: #050505;
-  border-bottom-right-radius: 1.3em !important;
-  border-top-right-radius: 1.3em !important;
+  border-bottom-right-radius: 1.3em;
+  border-bottom-left-radius: 1.3em;
+  border-top-right-radius: 1.3em;
+  border-top-left-radius: 1.3em;
   display: flex;
 }
 
 .message__guestCard__darkMode {
   background-color: #3E4042;
   color: #E4E6EB;
-  border-bottom-right-radius: 1.3em !important;
-  border-top-right-radius: 1.3em !important;
+  border-bottom-right-radius: 1.3em;
+  border-bottom-left-radius: 1.3em;
+  border-top-right-radius: 1.3em;
+  border-top-left-radius: 1.3em;
   display: flex;
 }
 
