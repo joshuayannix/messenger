@@ -10,7 +10,7 @@ function Navbar({username}) {
   };
 
   const titleStyles = {
-    color: isDarkMode? 'black' : 'white'
+    color: isDarkMode? 'black' : '#e4e6eb'
   }
   return (    
     <div className="app__header" style={headerStyles}>

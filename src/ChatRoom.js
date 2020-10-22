@@ -12,6 +12,11 @@ function ChatRoom() {
     background: isDarkMode? 'white' : '#1c1e21'
   }
 
+  const formInputStyles = {
+    background: isDarkMode? '#f0f2f5' : '#3a3b3c',
+    color: isDarkMode? '#050505' : '#E4E6EB'
+  }
+
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState('');
   const [username, setUsername] = useState('');
@@ -54,9 +59,9 @@ function ChatRoom() {
       <span ref={dummy}></span>
     </main>
 
-    <form>
+    <form >
       
-      <input placeholder='Type a message...' value={input} onChange={event => setInput(event.target.value)}/>
+      <input style={formInputStyles} placeholder='Type a message...' value={input} onChange={event => setInput(event.target.value)}/>
       
       <button className='app__iconButton' disabled={!input} type='submit' onClick={sendMessage}>Send Message</button>
       

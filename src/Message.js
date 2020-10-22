@@ -10,9 +10,7 @@ const Message = forwardRef(({ message, username, messageID }, ref) => {
 
   return (
     <div ref={ref} className={`message ${isUser && 'message__user'}`}>
-      <div className={isUser ? 'message__userCard' : isDarkMode ? 'message__guestCard' : 'message__guestCard__darkMode'}
-       
-      >
+      <div className={isUser ? 'message__userCard' : isDarkMode ? 'message__guestCard' : 'message__guestCard__darkMode'}>
 
         <p>{!isUser && `${message.username || 'Unkown User'}:`} {message.message}</p>
         

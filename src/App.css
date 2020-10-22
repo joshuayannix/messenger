@@ -39,17 +39,6 @@ main {
   flex-direction: column;
 }
 
-/* main::-webkit-scrollbar {
-  width: 0.5rem;
-}
-
-main::-webkit-scrollbar-track {
-  background: #1e1e24;
-}
-
-main::-webkit-scrollbar-thumb {
-  background: #6649b8;
-} */
 
 /********* Form *********/
 
