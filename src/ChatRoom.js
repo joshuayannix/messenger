@@ -6,14 +6,13 @@ import { ThemeContext } from './ThemeContext';
 import SendIcon from '@material-ui/icons/Send';
 import { IconButton } from '@material-ui/core';
 
-function ChatRoom() {
+function ChatRoom({username}) {
   const dummy = useRef();
   const { isDarkMode } = useContext(ThemeContext);
 
   const chatStyles = {
     background: isDarkMode? 'white' : '#1c1e21',
     border: isDarkMode ? '2px solid #e9e9eb' : '2px solid #3E4042' 
-
   }
 
   const formInputStyles = {
@@ -23,7 +22,6 @@ function ChatRoom() {
 
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState('');
-  const [username, setUsername] = useState('');
   
   useEffect(() => {
     db.collection('messages')
@@ -35,9 +33,7 @@ function ChatRoom() {
     })
   }, []);
 
-  // useEffect(() => {
-  //   setUsername(prompt('Please enter your name'));
-  // }, [] );
+  
 
   const sendMessage = async event => {
     event.preventDefault();

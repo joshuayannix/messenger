@@ -31,7 +31,7 @@
 main {
   padding: 10px;
   height: 80vh;
-  margin: 10vh 0 10vh;
+  margin: 10vh 0 9vh;
   overflow-y: scroll;
   display: flex;
   flex-direction: column;
@@ -48,13 +48,11 @@ form {
   max-width: 728px;
   display: flex;
   font-size: 1.5rem;  
-  
 }
 
 form button {
   width: 10%;
 }
-
 
 input {
   line-height: 1.5;
