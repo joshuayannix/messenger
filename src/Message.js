@@ -2,7 +2,7 @@ import React, { forwardRef, useContext } from 'react';
 import HighlightOffIcon from '@material-ui/icons/HighlightOff';
 import { IconButton } from '@material-ui/core';
 import db from './firebase';
-import { ThemeContext } from './ThemeContext';
+import { ThemeContext } from './StateThemeContext';
 
 const Message = forwardRef(({ message, username, messageID }, ref) => {
   const isUser = username === message.username;

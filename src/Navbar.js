@@ -1,6 +1,6 @@
 import React, {useContext} from 'react';
 import Switch from "@material-ui/core/Switch";
-import { ThemeContext } from './ThemeContext';
+import { ThemeContext } from './StateThemeContext';
 import logo from './jlogo.png'
 
 

@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import './App.css';
 import Navbar from "./Navbar";
-import { ThemeProvider } from './ThemeContext';
 import ChatRoom from './ChatRoom';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 function App() {
   const [username, setUsername] = useState('');
@@ -11,15 +11,14 @@ function App() {
   // }, [] );
 
   return (
-    <ThemeProvider>
+    <Router>
       <div className="App">
         <Navbar username={username}/>
         <section>
           <ChatRoom username={username}/>
         </section>   
-
-      </div>     
-    </ThemeProvider>
+      </div>  
+    </Router>   
   );
 }
 
