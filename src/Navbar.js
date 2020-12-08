@@ -5,6 +5,7 @@ import logo from './jlogo.png'
 import { auth } from './firebase';
 import { useSelector } from 'react-redux';
 import { selectUser } from './features/userSlice';
+import { Avatar } from '@material-ui/core';
 
 function Navbar() {
   const user = useSelector(selectUser)
@@ -23,8 +24,8 @@ function Navbar() {
   return (    
     <div className="app__header" style={headerStyles}>
       <img onClick={() => auth.signOut()}src={logo} alt="logo" width='40px'/>
-      <h2 style={titleStyles}>Welcome {user.displayName}</h2>      
-      <img src={user.photo} alt=""/>
+      <Avatar onClick={() => auth.signOut()} src={user.photo} /> 
+      <h2 style={titleStyles}>{user.displayName}</h2>      
       <Switch onChange={setDarkMode}/>
     </div>    
   )

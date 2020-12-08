@@ -6,8 +6,11 @@ import { ThemeContext } from './ThemeContext';
 import SendIcon from '@material-ui/icons/Send';
 import { IconButton } from '@material-ui/core';
 import ClearAllIcon from '@material-ui/icons/ClearAll';
+import { useSelector } from 'react-redux';
+import { selectUser } from './features/userSlice';
 
-function ChatRoom({username}) {
+function ChatRoom() {
+  const user = useSelector(selectUser)
   const dummy = useRef();
   const { isDarkMode } = useContext(ThemeContext);
 
@@ -34,13 +37,11 @@ function ChatRoom({username}) {
     })
   }, []);
 
-  
-
   const sendMessage = async event => {
     event.preventDefault();
     await db.collection('messages').add({
       message: input,
-      username: username,
+      user: user,
       timestamp: firebase.firestore.FieldValue.serverTimestamp()
     });
 
@@ -67,7 +68,14 @@ function ChatRoom({username}) {
   <div style={chatStyles}>
     <main>
       
-      {messages.map(({ id, message }) => (<Message key={id} messageID={id} username={username} message={message}/>))}
+      {messages.map(({ id, message }) => (
+        <Message 
+          key={id} 
+          messageID={id} 
+          user={message.user} 
+          message={message}
+        />
+      ))}
       
       <span ref={dummy}></span>
 

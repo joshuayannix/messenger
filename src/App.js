@@ -33,7 +33,7 @@ function App() {
     <div className="App">
       {user ? (
       <>
-        <Navbar username={user}/>
+        <Navbar/>
         <section>
           <ChatRoom/>
         </section>
