@@ -2,7 +2,7 @@ import React, { useEffect, useState, useRef, useContext } from 'react'
 import Message from './Message';
 import db from './firebase';
 import firebase from 'firebase';
-import { ThemeContext } from './StateThemeContext';
+import { ThemeContext } from './ThemeContext';
 import SendIcon from '@material-ui/icons/Send';
 import { IconButton } from '@material-ui/core';
 import ClearAllIcon from '@material-ui/icons/ClearAll';

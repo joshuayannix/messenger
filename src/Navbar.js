@@ -1,10 +1,14 @@
 import React, {useContext} from 'react';
 import Switch from "@material-ui/core/Switch";
-import { ThemeContext } from './StateThemeContext';
+import { ThemeContext } from './ThemeContext';
 import logo from './jlogo.png'
+import { auth } from './firebase';
+import { useSelector } from 'react-redux';
+import { selectUser } from './features/userSlice';
 
+function Navbar() {
+  const user = useSelector(selectUser)
 
-function Navbar({username}) {
   const { isDarkMode, setDarkMode } = useContext(ThemeContext);
 
   const headerStyles = {
@@ -18,8 +22,9 @@ function Navbar({username}) {
 
   return (    
     <div className="app__header" style={headerStyles}>
-      <img src={logo} alt="logo" width='40px'/>
-      <h2 style={titleStyles}>Welcome {username}! </h2>      
+      <img onClick={() => auth.signOut()}src={logo} alt="logo" width='40px'/>
+      <h2 style={titleStyles}>Welcome {user.displayName}</h2>      
+      <img src={user.photo} alt=""/>
       <Switch onChange={setDarkMode}/>
     </div>    
   )

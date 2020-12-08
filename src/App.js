@@ -1,24 +1,47 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import './App.css';
 import Navbar from "./Navbar";
 import ChatRoom from './ChatRoom';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import Login from './Login';
+import { auth } from './firebase';
+import { login, logout } from './features/userSlice';
+import { selectUser } from './features/userSlice';
+import { useSelector, useDispatch } from 'react-redux';
 
 function App() {
-  const [username, setUsername] = useState('');
-  // useEffect(() => {
-  //   setUsername(prompt('Please enter your name'));
-  // }, [] );
+  const dispatch = useDispatch();
+  const user = useSelector(selectUser);
+
+  useEffect(() => {    
+    auth.onAuthStateChanged((authUser) => {
+      if(authUser) {
+        // user is logged in
+        dispatch(login({
+          uid: authUser.uid,
+          photo: authUser.photoURL,
+          email: authUser.email,
+          displayName: authUser.displayName
+        }))
+      } else {
+        // user is logged out
+        dispatch(logout());
+      }
+    })
+  }, [dispatch]);
 
   return (
-    <Router>
-      <div className="App">
-        <Navbar username={username}/>
+    <div className="App">
+      {user ? (
+      <>
+        <Navbar username={user}/>
         <section>
-          <ChatRoom username={username}/>
-        </section>   
-      </div>  
-    </Router>   
+          <ChatRoom/>
+        </section>
+      </>
+      ) : (
+        <Login />
+      )}  
+    </div>       
   );
 }
 

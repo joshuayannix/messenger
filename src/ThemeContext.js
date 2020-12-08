@@ -1,4 +1,4 @@
-import React, { createContext, useState, useReducer } from 'react';
+import React, { createContext, useState, useReducer, useContext } from 'react';
 
 // create the data layer
 export const ThemeContext = createContext();
@@ -17,15 +17,3 @@ export function ThemeProvider(props) {
     </ThemeContext.Provider>
   )
 }
-
-// create another data layer
-export const StateContext = createContext()
-
-// build a state provider
-export const StateProvider = ({ reducer, initialState, children }) => (
-  <StateContext.Provider 
-    value={useReducer(reducer, initialState)}
-  >
-    {children}
-  </StateContext.Provider>
-)
