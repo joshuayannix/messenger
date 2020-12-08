@@ -80,11 +80,15 @@ p {
   position: relative;
 }
 
+.avatar {
+  margin-right: 3px;
+}
 .message {
   margin: 1px 0px;
   padding: 1px 3px;
   width: fit-content;
   transition: transform 350ms;
+  display: flex;
 }
 
 .message__user {
