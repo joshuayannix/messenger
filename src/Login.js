@@ -14,7 +14,7 @@ function Login() {
       <div className="login__logo">
         <img src={messenger_logo} alt='messenger login'/>
       </div>
-      <Button onClick={signIn}>Sign In</Button>
+      <Button onClick={signIn}>Log In</Button>
     </div>
   )
 }

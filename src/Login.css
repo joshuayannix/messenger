@@ -6,18 +6,21 @@
 }
 
 .login > button {
-  width: 300px;
-  background-color: #738adb;
+  width: 364px;
+  height: 48px;
+  background-color: #1877F2;
   color: #eff2f5;
   font-weight: 800;
+  padding: 0, 16px;
+  margin-bottom: 60%;
 }
 
 .login > button:hover {
-  background-color: black;
-  color: #738adb;
+  background-color: #166fE5;
 }
 
 .login > div > img {
   object-fit: contain;
   height: 150px;
+  margin-top: 70%;
 }

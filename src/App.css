@@ -4,6 +4,7 @@
   margin: 0 auto;
 }
 
+/* Navbar */
 .app__header {
   height: 10vh;
   min-height: 50px;
@@ -19,6 +20,26 @@
   padding: 10px;
   box-sizing: border-box;
 }
+
+.userDetails {
+  display: flex;
+  align-items: center;
+  border-radius: 39px;
+  padding: 2px;
+  margin-left: 400px;
+  height: 40px;
+}
+
+.userDetails:hover {
+  background: #E4E6EB;
+  cursor: pointer;
+}
+
+.navbarAvatar {
+  margin-right: 3px;
+}
+
+/* App */
 
 .App section {
   display: flex;

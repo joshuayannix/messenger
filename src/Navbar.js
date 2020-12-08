@@ -1,7 +1,7 @@
 import React, {useContext} from 'react';
 import Switch from "@material-ui/core/Switch";
 import { ThemeContext } from './ThemeContext';
-import logo from './jlogo.png'
+import logo from './messenger_logo.png'
 import { auth } from './firebase';
 import { useSelector } from 'react-redux';
 import { selectUser } from './features/userSlice';
@@ -23,9 +23,17 @@ function Navbar() {
 
   return (    
     <div className="app__header" style={headerStyles}>
-      <img onClick={() => auth.signOut()}src={logo} alt="logo" width='40px'/>
-      <Avatar onClick={() => auth.signOut()} src={user.photo} /> 
-      <h2 style={titleStyles}>{user.displayName}</h2>      
+      <img src={logo} alt="logo" width='40px'/>
+      <div className="userDetails" onClick={() => auth.signOut()} >
+        <Avatar           
+          src={user.photo} 
+          className='navbarAvatar'
+        /> 
+        <h4 style={titleStyles}>
+          {user.displayName}
+        </h4>  
+      </div>
+          
       <Switch onChange={setDarkMode}/>
     </div>    
   )
