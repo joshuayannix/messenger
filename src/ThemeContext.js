@@ -1,4 +1,4 @@
-import React, { createContext, useState, useReducer, useContext } from 'react';
+import React, { createContext, useState } from 'react';
 
 // create the data layer
 export const ThemeContext = createContext();
